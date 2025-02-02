@@ -87,6 +87,7 @@ h2 {
 .intro p {
     color: var(--color1);
     padding-block: 1rem;
+    padding-inline: 10px;
 }
 
 
@@ -105,7 +106,7 @@ button {
     -o-border-radius: 20px;
     background-color: var(--color1);
     color: #eee;
-    margin-inline: 10px;
+    margin: 10px;
     transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
@@ -170,17 +171,23 @@ button {
 }
 
 .color-options>button:hover {
-    transform: translateY(-10px);
-    -webkit-transform: translateY(-10px);
-    -moz-transform: translateY(-10px);
-    -ms-transform: translateY(-10px);
-    -o-transform: translateY(-10px);
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
 }
 
 .color-options>button:focus {
     border: 2px solid var(--color2);
     outline: 2px solid var(--color1);
     outline-offset: 5px;
+}
+
+/* Game instruction Styles */
+
+.game-section p {
+    padding-inline: 10px;
 }
 
 /* Footer Styles */
