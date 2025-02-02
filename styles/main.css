@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Autour+One&family=Oi&family=Ultra&display=swap');
 
+/* General styles */
 * {
     padding: 0;
     margin: 0;
@@ -8,6 +9,16 @@
     text-align: center;
     line-height: 1.5;
 }
+
+/* Body Styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* font styles */
+
 
 h1 {
     text-transform: uppercase;
@@ -36,6 +47,52 @@ button {
     font-family: 'Autour One', serif;
     font-size: 0.85rem;
     letter-spacing: 1.5px;
+}
+
+/* Game Section Styles*/
+.game-section {
+    padding-block: 4rem;
+}
+
+/* Color Box Styles */
+
+.color-box {
+    height: 200px;
+    max-width: 200px;
+    border: 2px solid greenyellow;
+    margin-inline: auto;
+    margin-block: 1.5rem;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+/* Color options Styles */
+.color-options {
+    display: flex;
+    gap: 15px;
+    padding-block: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.color-options>button {
+    height: 75px;
+    width: 75px;
+    border: 2px solid lime;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+/* Footer Styles */
+
+footer {
+    margin-top: auto;
 }
 
 @media screen and (min-width: 500px) {
