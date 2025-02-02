@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Guess the color game</title>
+</head>
+
+<body>
+    <header>
+        <h1>guess the color game</h1>
+    </header>
+    <main>
+        <section>
+            <h2>how good is your colour vision?</h2>
+            <p>Put your visual prowess to the test now!</p>
+        </section>
+        <section>
+            <h3 data-testid="scor">Score: 0</h3>
+            <h3 data-testid="gameStatus"></h3>
+            <div data-testid="colorBox"></div>
+            <p data-testid="gameInstructions">Click the button that matches the above colour!</p>
+            <div class="colorOptions">
+                <button data-testid="colorOption"></button>
+                <button data-testid="colorOption"></button>
+                <button data-testid="colorOption"></button>
+                <button data-testid="colorOption"></button>
+                <button data-testid="colorOption"></button>
+                <button data-testid="colorOption"></button>
+            </div>
+            <button data-testid="submitOptionButton">Submit Choice!</button>
+            <button data-testid="newGameButton"></button>
+        </section>
+    </main>
+    <footer>HNG Internship © <span id="year">2024</span></footer>
+
+</body>
+
+</html>
