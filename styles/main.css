@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Autour+One&family=Oi&family=Ultra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Autour+One&family=Fontdiner+Swanky&family=Ultra&display=swap');
+
+:root {
+    --color1: #3D5300;
+    --color2: #F09319;
+    --color3: #FFE31A;
+    --color4: #ABBA7C;
+}
 
 /* General styles */
 * {
@@ -15,6 +22,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to bottom left, var(--color4), #fff, var(--color4));
 }
 
 /* font styles */
@@ -22,7 +30,7 @@ body {
 
 h1 {
     text-transform: uppercase;
-    font-family: 'Oi', serif;
+    font-family: 'Fontdiner Swanky', serif;
     letter-spacing: 2px;
     word-spacing: 2px;
     font-size: 1.5rem;
@@ -42,12 +50,45 @@ h3 {
 }
 
 p,
-footer,
 button {
     font-family: 'Autour One', serif;
     font-size: 0.85rem;
     letter-spacing: 1.5px;
 }
+
+/* h1 styles */
+
+h1 {
+    width: fit-content;
+    margin-inline: auto;
+    margin-top: 4rem;
+    background: linear-gradient(60deg, var(--color2), var(--color3), var(--color1));
+    background-clip: text;
+    color: white;
+    -webkit-text-stroke: 5px;
+    -webkit-text-stroke-color: transparent;
+    padding-inline: 10px;
+}
+
+/* h2 Styles */
+
+h2 {
+    width: fit-content;
+    margin-inline: auto;
+    margin-top: 2rem;
+    background: linear-gradient(60deg, var(--color3), var(--color2), var(--color1));
+    background-clip: text;
+    color: transparent;
+    padding-inline: 10px;
+}
+
+/* Intro section paragraph styles */
+
+.intro p {
+    color: var(--color1);
+    padding-block: 1rem;
+}
+
 
 /* Reset button colour */
 button {
@@ -62,7 +103,9 @@ button {
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
-    border: 2px solid greenyellow;
+    border: 2px solid var(--color1);
+    background-color: var(--color1);
+    color: #eee;
     margin-inline: 10px;
 }
 
@@ -76,7 +119,7 @@ button {
 .color-box {
     height: 200px;
     max-width: 200px;
-    border: 2px solid greenyellow;
+    border: 2px solid var(--color1);
     margin-inline: auto;
     margin-block-start: 1.5rem;
     margin-block-end: 3rem;
@@ -99,7 +142,7 @@ button {
 .color-options>button {
     height: 75px;
     width: 75px;
-    border: 2px solid lime;
+    border: 2px solid var(--color2);
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
@@ -111,8 +154,14 @@ button {
 
 footer {
     margin-top: auto;
+    font-family: 'Autour One', serif;
+    font-size: 0.6rem;
+    color: var(--color2);
+    padding-block: 0.8rem;
 }
 
+
+/* styles for larger mobile devices */
 @media screen and (min-width: 500px) {
     h1 {
         font-size: 2rem;
@@ -122,6 +171,9 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+
+/* styles for tablet devices */
 
 @media screen and (min-width: 768px) {
     h1 {
@@ -141,12 +193,15 @@ footer {
     }
 }
 
+/*styles for laptops */
+
 @media screen and (min-width: 1200px) {
     h1 {
         font-size: 3.5rem;
     }
 }
 
+/* styles for desktop computers */
 @media screen and (min-width: 1440px) {
     h1 {
         font-size: 4rem;
