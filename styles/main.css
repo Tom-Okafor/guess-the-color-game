@@ -49,6 +49,23 @@ button {
     letter-spacing: 1.5px;
 }
 
+/* Reset button colour */
+button {
+    background-color: transparent;
+}
+
+/* Styles for subit amd restart game controls */
+.control {
+    padding: 7px 15px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    border: 2px solid greenyellow;
+    margin-inline: 10px;
+}
+
 /* Game Section Styles*/
 .game-section {
     padding-block: 4rem;
@@ -61,7 +78,8 @@ button {
     max-width: 200px;
     border: 2px solid greenyellow;
     margin-inline: auto;
-    margin-block: 1.5rem;
+    margin-block-start: 1.5rem;
+    margin-block-end: 3rem;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -73,7 +91,7 @@ button {
 .color-options {
     display: flex;
     gap: 15px;
-    padding-block: 1.5rem;
+    padding-block: 2.5rem;
     justify-content: center;
     flex-wrap: wrap;
 }
