@@ -140,9 +140,11 @@ const game = () => {
   function handleColorOptionButtonClick() {
     colorOptionButtons.forEach((colorButton) => {
       const colorId = colorButton.id;
-      colorButton.addEventListener("click", () =>
-        newGame.setPlayerColorChoice(colorId)
-      );
+      colorButton.addEventListener("click", () => {
+        const audio = new Audio("assets/sounds/click.mp3");
+        audio.play();
+        newGame.setPlayerColorChoice(colorId);
+      });
     });
   }
 
