@@ -57,12 +57,66 @@ button {
     letter-spacing: 1.5px;
 }
 
+/* Logo styles */
+
+.logo {
+    --height: 50px;
+    --width: 50px;
+    --gap: 10px;
+    --color: var(--color2);
+    --font-size: 0.9rem;
+    --font-family: "Fontdiner Swanky", serif;
+    --position: 10px;
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+    position: absolute;
+    top: var(--position);
+    left: var(--position);
+}
+
+.logo>img {
+    height: var(--height);
+    width: var(--width);
+}
+
+.logo>p {
+    font-size: var(--font-size);
+    color: var(--color);
+    font-family: var(--font-family);
+    animation: colorSwitch 3s ease-out infinite alternate;
+    -webkit-animation: colorSwitch 3s ease-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @keyframes colorSwitch {
+        20% {
+            color: var(--color1);
+            letter-spacing: 2px;
+        }
+
+        40% {
+            color: #ff9100;
+        }
+
+        60% {
+            color: #e91e63;
+        }
+
+        80% {
+            color: #0091ea;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+
 /* h1 styles */
 
 h1 {
     width: fit-content;
     margin-inline: auto;
-    margin-top: 4rem;
+    margin-top: 5rem;
     background: linear-gradient(60deg, var(--color2), var(--color3), var(--color1));
     background-clip: text;
     color: white;
