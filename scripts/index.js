@@ -104,11 +104,52 @@ class GameController {
         (eachButton.style.backgroundColor = this.colorOptions[index])
     );
   }
+
+  setPlayerColorChoice(choice) {
+    this.colorChoice = choice;
+  }
+
+  compareColorChoiceAndTargetColor() {
+    return this.colorChoice === this.targetColorId;
+  }
+
+  showCorrectChoiceVerdict() {}
+
+  showFailedChoiceVerdict() {}
 }
 
-const a = new GameController(selectRandomColourAsTarget());
-console.log(a);
-a.targetColorPosition();
-a.setTargetColorId();
-a.setTargetBackgroundColor();
-a.setColorOptionsBackgroundColors();
+const game = () => {
+  const newGame = new GameController(selectRandomColourAsTarget());
+  const colorOptionButtons = document.querySelectorAll(
+    ".color-options > button"
+  );
+  const confirmChoiceButton = document.getElementById("confirm");
+  const restartGameButton = document.getElementById("restart");
+  setUpGame();
+  handleColorOptionButtonClick();
+  handleConfirmChoiceButtonClick();
+
+  function setUpGame() {
+    newGame.targetColorPosition();
+    newGame.setTargetBackgroundColor();
+    newGame.setTargetColorId();
+    newGame.setColorOptionsBackgroundColors();
+  }
+
+  function handleColorOptionButtonClick() {
+    colorOptionButtons.forEach((colorButton) => {
+      const colorId = colorButton.id;
+      colorButton.addEventListener("click", () =>
+        newGame.setPlayerColorChoice(colorId)
+      );
+    });
+  }
+
+  function handleConfirmChoiceButtonClick() {
+    confirmChoiceButton.addEventListener("click", () =>
+      console.log(newGame.compareColorChoiceAndTargetColor())
+    );
+  }
+};
+
+game();
