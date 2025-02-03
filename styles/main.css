@@ -22,7 +22,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to bottom left, var(--color4), #fff, var(--color4));
+    background: linear-gradient(to bottom left, var(--color3) 11.5%, var(--color2) 11.5% 12%, var(--color1) 12% 12.5%, var(--color4) 12.5% 13%, #ffffff 13% 84.5%, var(--color2) 84.5% 85%, var(--color4) 85% 85.5%, var(--color1) 85.5% 86%, var(--color3) 86%);
 }
 
 /* font styles */
@@ -47,6 +47,7 @@ h2 {
 h3 {
     font-family: 'Ultra', serif;
     letter-spacing: 2px;
+    color: var(--color1);
 }
 
 p,
