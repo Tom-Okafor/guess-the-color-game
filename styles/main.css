@@ -22,7 +22,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to bottom left, var(--color3) 11.5%, var(--color2) 11.5% 12%, var(--color1) 12% 12.5%, var(--color4) 12.5% 13%, #ffffff 13% 84.5%, var(--color2) 84.5% 85%, var(--color4) 85% 85.5%, var(--color1) 85.5% 86%, var(--color3) 86%);
+    background: linear-gradient(to bottom left, var(--color3) 6.5%, var(--color2) 6.5% 7%, var(--color1) 7% 7.5%, var(--color4) 7.5% 8%, #ffffff 8% 93.5%, var(--color2) 93.5% 94%, var(--color4) 94% 94.5%, var(--color1) 94.5% 95%, var(--color3) 95%);
 }
 
 /* font styles */
@@ -131,7 +131,7 @@ h2 {
     width: fit-content;
     margin-inline: auto;
     margin-top: 2rem;
-    background: linear-gradient(60deg, var(--color3), var(--color2), var(--color1));
+    background: linear-gradient(60deg, var(--color2), var(--color3), var(--color1));
     background-clip: text;
     color: transparent;
     padding-inline: 10px;
@@ -191,7 +191,7 @@ button {
     margin-inline: auto;
     margin-block-start: 1.5rem;
     margin-block-end: 3rem;
-    box-shadow: 0px 5px 20px -1px #00000099;
+    box-shadow: 0px 5px 15px -2px #00000099;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -243,6 +243,9 @@ button {
 
 .game-section p {
     padding-inline: 10px;
+    max-width: 50ch;
+    margin-inline: auto;
+    line-height: 2;
 }
 
 /* Footer Styles */
