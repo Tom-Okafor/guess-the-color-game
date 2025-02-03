@@ -1,27 +1,27 @@
 const COLOURS = [
   "#fa6800",
   "#b388ff",
-  "#00796b",
+  "#b0c9ab",
   "#647687",
   "#bc8f8f",
   "#cd853f",
-  "#8b4513",
+  "#804513",
   "#ffb7ad",
   "#dc143c",
   "#8b0000",
   "#ad1457",
   "#ff1493",
-  "#ff4500",
-  "#20b2aa",
+  "#ffc500",
+  "#a0b2aa",
   "#008b8b",
-  "#ff00ff",
+  "#a9c1ff",
   "#4169e1",
   "#1e90ff",
   "#00cc6a",
   "#34495e",
   "#1abc9c",
   "#abcdef",
-  "#fedcba",
+  "#cc0fa2",
   "#ffd700",
 ];
 
@@ -62,8 +62,10 @@ function shuffleAll6Colours(targetColor) {
   ];
   //array must be shuffled otherwise the target colour will always be at the same position.
 
-  // use array.sort method to shuffle the array based on the result of the computation which either gives a negative -1 or 0. Each result will affect the position of each item.
-  arrayOf6Colours.sort((a, b) => Math.round(Math.random()) - 1);
+  // use array.sort method to shuffle the array based on the result of the computation which either gives a -1 or 0. Each result will affect the position of each item. Shuffle it twice to ensure efficient scattering.
+  arrayOf6Colours
+    .sort((a, b) => Math.round(Math.random()) - 1)
+    .sort((a, b) => Math.round(Math.random()) - 1);
   return arrayOf6Colours;
 }
 
