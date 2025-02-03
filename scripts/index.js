@@ -76,7 +76,7 @@ class GameController {
     this.colorOptions = shuffleAll6Colours(targetColor);
   }
   //find the target color position in the color options array.
-  targetColorPosition() {
+  setTargetColorPosition() {
     const position = this.colorOptions.findIndex(
       (elem) => elem === this.targetColor
     );
@@ -120,6 +120,7 @@ class GameController {
 
 const game = () => {
   const newGame = new GameController(selectRandomColourAsTarget());
+  console.log(newGame);
   const colorOptionButtons = document.querySelectorAll(
     ".color-options > button"
   );
@@ -130,7 +131,7 @@ const game = () => {
   handleConfirmChoiceButtonClick();
 
   function setUpGame() {
-    newGame.targetColorPosition();
+    newGame.setTargetColorPosition();
     newGame.setTargetBackgroundColor();
     newGame.setTargetColorId();
     newGame.setColorOptionsBackgroundColors();
@@ -146,10 +147,21 @@ const game = () => {
   }
 
   function handleConfirmChoiceButtonClick() {
-    confirmChoiceButton.addEventListener("click", () =>
-      console.log(newGame.compareColorChoiceAndTargetColor())
-    );
+    confirmChoiceButton.addEventListener("click", () => {
+      if (newGame.compareColorChoiceAndTargetColor()) {
+        console.log(newGame);
+        const newTargetColor = selectRandomColourAsTarget();
+        newGame.targetColor = newTargetColor;
+        newGame.colorOptions = shuffleAll6Colours(newTargetColor);
+        setUpGame();
+      }
+    });
   }
+
+  function handlePlayerChoiceVerdict() {}
+
+  function playerMadeRightChoice() {}
+  function playerMadeWrongChoice() {}
 };
 
 game();
