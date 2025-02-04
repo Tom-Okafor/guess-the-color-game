@@ -324,4 +324,10 @@ const game = () => {
 
 game();
 
+// update footer year dynamically
+(() => {
+  const year = document.getElementById("year");
+  year.innerText = new Date().getFullYear();
+})();
+
 //phew, this was something! Thank you HNG!!!
