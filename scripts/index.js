@@ -76,6 +76,42 @@ function shuffleAll6Colours(targetColor) {
   return arrayOf6Colours;
 }
 
+const correctStatuses = [
+  "Way to go Eyes! CORRECT!",
+  "Well, look at you, the color wizard! Nailed it!",
+  "You must have x-ray vision! Spot on.",
+  "Yup! Someone’s got an eye for colors.",
+  "Colors bow down to you! Nice job.",
+  "You’re like the Picasso of this game. Correct!",
+  "Who knew you had a PhD in colorology? Correct!",
+  "Absolutely, positively, indisputably correct!",
+  "You’re practically a rainbow whisperer. Spot on!",
+  "Guess who’s a color genius? Spoiler: It’s you.",
+  "Phew! You created colours, Honey!",
+  "Your eyes belong in a MUSEUM! CORRECT!",
+  "Nah! You're just too good, fren.",
+];
+
+const wrongStatuses = [
+  "Now why would you flop that? WRONG!",
+  "Well, that’s a nope. Better luck next time!",
+  "Oops, did your eyes take a nap? Try again.",
+  "Nope, that color missed the memo.",
+  "Your eyes are playing tricks on you. Try again.",
+  "Gurl... Maybe you need glasses.",
+  "Well, that was colorful… but wrong.",
+  "Darling, that was... uhmm... un(colored)for",
+  "Color blindness is real!",
+  "Color fail of epic proportions!",
+  "One more of this, and I'm calling the color Police. #WTF",
+  "WELP! Even blind Barthimeus could've gotten that.",
+  "Your eyes have to be decorative objects. Nah!",
+  "I'm afraid nothing can be done for those eyes of yours boo. Sorry.",
+];
+
+function randomStatusMessage(category) {
+  return category[generateRandomArrayIndex(category)];
+}
 class GameController {
   constructor(targetColor) {
     this.score = 0;
@@ -177,13 +213,13 @@ class GameController {
     this.incrementScore();
     this.setScore();
     this.showChoiceVerdict("--congratulations");
-    this.displayGameStatus("Way to go Eyes! CORRECT!");
+    this.displayGameStatus(randomStatusMessage(correctStatuses));
     this.playAudio("assets/sounds/applause.mp3");
   }
 
   playerMadeWrongChoice() {
     this.showChoiceVerdict("--wrong");
-    this.displayGameStatus("Now why would you flop that? WRONG!");
+    this.displayGameStatus(randomStatusMessage(wrongStatuses));
     this.playAudio("assets/sounds/boo.mp3");
   }
 
