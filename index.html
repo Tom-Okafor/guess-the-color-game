@@ -41,6 +41,11 @@
                 </div>
                 <button data-testid="confirmOptionButton" class="control" id="confirm">Confirm Choice</button>
                 <button data-testid="newGameButton" class="control" id="restart">Restart Game</button>
+                <div data-testid="newGameWarning" class="warning">
+                    <h4>Warning: You will lose your progress if you choose to restart.</h4>
+                    <button data-testid="confirmNewGame" id="confirmRestart">Restart</button>
+                    <button data-testid="cancelNewGame" id="cancelRestart">Cancel</button>
+                </div>
                 <h4 id="errorMessage" data-testid="errorMessage"></h4>
                 <div class="displayStatusImage"></div>
             </div>
