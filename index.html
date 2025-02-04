@@ -24,20 +24,26 @@
             <p>Put your visual prowess to the test now!</p>
         </section>
         <section class="game-section">
-            <h3 data-testid="score">Score: 0</h3>
-            <h3 data-testid="gameStatus"></h3>
-            <div data-testid="colorBox" class="color-box"></div>
-            <p data-testid="gameInstructions">Select the button that matches the above colour and confirm your choice below!</p>
-            <div class="color-options">
-                <button data-testid="colorOption" id="color-1"></button>
-                <button data-testid="colorOption" id="color-2"></button>
-                <button data-testid="colorOption" id="color-3"></button>
-                <button data-testid="colorOption" id="color-4"></button>
-                <button data-testid="colorOption" id="color-5"></button>
-                <button data-testid="colorOption" id="color-6"></button>
+            <h3 data-testid="score">Score: <span id="score">0</span></h3>
+            <h3 data-testid="gameStatus" id="status"></h3>
+            <div class="container">
+                <div data-testid="colorBox" class="color-box"></div>
+                <p data-testid="gameInstructions">Select the button that matches the above colour and confirm your
+                    choice
+                    below!</p>
+                <div class="color-options">
+                    <button data-testid="colorOption" id="color-1"></button>
+                    <button data-testid="colorOption" id="color-2"></button>
+                    <button data-testid="colorOption" id="color-3"></button>
+                    <button data-testid="colorOption" id="color-4"></button>
+                    <button data-testid="colorOption" id="color-5"></button>
+                    <button data-testid="colorOption" id="color-6"></button>
+                </div>
+                <button data-testid="confirmOptionButton" class="control" id="confirm">Confirm Choice</button>
+                <button data-testid="newGameButton" class="control" id="restart">Restart Game</button>
+                <div class="displayStatusImage"></div>
             </div>
-            <button data-testid="confirmOptionButton" class="control" id="confirm">Confirm Choice</button>
-            <button data-testid="newGameButton" class="control" id="restart">Restart Game</button>
+
         </section>
     </main>
     <footer>HNG Internship - Tommy © <span id="year">2024</span></footer>
