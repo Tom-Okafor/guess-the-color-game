@@ -4,7 +4,8 @@
 
 - [About the Game](#about-the-game)
 - [How To Play](#how-to-play)
-- [Features](#features) - [Acknowledgement](#acknowledgement)
+- [Features](#features)
+- [Acknowledgement](#acknowledgement)
 
 ## ABOUT THE GAME
 
