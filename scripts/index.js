@@ -74,6 +74,7 @@ class GameController {
     this.score = 0;
     this.targetColor = targetColor;
     this.colorOptions = shuffleAll6Colours(targetColor);
+    this.colorChoice = null;
   }
   //find the target color position in the color options array.
   setTargetColorPosition() {
@@ -151,19 +152,28 @@ class GameController {
   handleConfirmChoiceButtonClick() {
     const confirmChoiceButton = document.getElementById("confirm");
     confirmChoiceButton.addEventListener("click", () => {
-      this.compareColorChoiceAndTargetColor()
-        ? this.playerMadeRightChoice()
-        : this.playerMadeWrongChoice();
-      this.setNewColourGroup();
+      // if (this.colorChoice) {
+      //   this.compareColorChoiceAndTargetColor()
+      //     ? this.playerMadeRightChoice()
+      //     : this.playerMadeWrongChoice();
+      // }
+
+      this.colorChoice
+        ? this.compareColorChoiceAndTargetColor()
+          ? this.playerMadeRightChoice()
+          : this.playerMadeWrongChoice()
+        : this.sendErrorMessage();
     });
   }
 
   playerMadeRightChoice() {
     this.showChoiceVerdict("--congratulations");
+    this.displayGameStatus("Way to go Eyes! CORRECT!");
   }
 
   playerMadeWrongChoice() {
     this.showChoiceVerdict("--wrong");
+    this.displayGameStatus("Now why would you flop that? WRONG!");
   }
 
   showChoiceVerdict(imageVar) {
@@ -173,6 +183,27 @@ class GameController {
     setTimeout(() => {
       statusImageHolder.classList.remove("shown");
       statusImageHolder.style.backgroundImage = "";
+      this.setNewColourGroup();
+      this.colorChoice = null;
+    }, 1500);
+  }
+
+  sendErrorMessage() {
+    const errorMessage = "Hey! You have to select a colour before you confirm.";
+    const errorMessageElem = document.getElementById("errorMessage");
+    errorMessageElem.innerText = errorMessage;
+    setTimeout(() => {
+      errorMessageElem.innerText = "";
+    }, 2000);
+  }
+
+  displayGameStatus(message) {
+    const gameStatusElement = document.querySelector(".status");
+    gameStatusElement.innerText = message;
+    gameStatusElement.classList.add("shown");
+    setTimeout(() => {
+      gameStatusElement.classList.remove("shown");
+      gameStatusElement.innerText = "";
     }, 2000);
   }
 }
