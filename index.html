@@ -25,7 +25,7 @@
         </section>
         <section class="game-section">
             <h3 data-testid="score">Score: <span id="score">0</span></h3>
-            <h3 data-testid="gameStatus" id="status"></h3>
+            <h3 data-testid="gameStatus" class="status"></h3>
             <div class="container">
                 <div data-testid="colorBox" class="color-box"></div>
                 <p data-testid="gameInstructions">Select the button that matches the above colour and confirm your
@@ -41,6 +41,7 @@
                 </div>
                 <button data-testid="confirmOptionButton" class="control" id="confirm">Confirm Choice</button>
                 <button data-testid="newGameButton" class="control" id="restart">Restart Game</button>
+                <h4 id="errorMessage" data-testid="errorMessage"></h4>
                 <div class="displayStatusImage"></div>
             </div>
 
