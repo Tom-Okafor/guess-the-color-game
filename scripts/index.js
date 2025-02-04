@@ -64,8 +64,8 @@ function shuffleAll6Colours(targetColor) {
 
   // use array.sort method to shuffle the array based on the result of the computation which either gives a -1 or 0. Each result will affect the position of each item. Shuffle it twice to ensure efficient scattering.
   arrayOf6Colours
-    .sort((a, b) => Math.round(Math.random()) - 1)
-    .sort((a, b) => Math.round(Math.random()) - 1);
+    .sort(() => Math.round(Math.random()) - 1)
+    .sort(() => Math.round(Math.random()) - 1);
   return arrayOf6Colours;
 }
 
@@ -113,54 +113,71 @@ class GameController {
     return this.colorChoice === this.targetColorId;
   }
 
-  showCorrectChoiceVerdict() {}
-
-  showFailedChoiceVerdict() {}
-}
-
-const game = () => {
-  const newGame = new GameController(selectRandomColourAsTarget());
-  console.log(newGame);
-  const colorOptionButtons = document.querySelectorAll(
-    ".color-options > button"
-  );
-  const confirmChoiceButton = document.getElementById("confirm");
-  const restartGameButton = document.getElementById("restart");
-  setUpGame();
-  handleColorOptionButtonClick();
-  handleConfirmChoiceButtonClick();
-
-  function setUpGame() {
-    newGame.setTargetColorPosition();
-    newGame.setTargetBackgroundColor();
-    newGame.setTargetColorId();
-    newGame.setColorOptionsBackgroundColors();
+  setNewColourGroup() {
+    this.targetColor = selectRandomColourAsTarget();
+    this.colorOptions = shuffleAll6Colours(this.targetColor);
+    this.setUpGame();
+  }
+  restartGame() {
+    this.setNewColourGroup();
+    this.score = 0;
   }
 
-  function handleColorOptionButtonClick() {
+  setUpGame() {
+    this.setTargetColorPosition();
+    this.setTargetBackgroundColor();
+    this.setTargetColorId();
+    this.setColorOptionsBackgroundColors();
+  }
+
+  playAudio(src) {
+    const audio = new Audio(src);
+    audio.play();
+  }
+
+  handleColorOptionButtonClick() {
+    const colorOptionButtons = document.querySelectorAll(
+      ".color-options > button"
+    );
     colorOptionButtons.forEach((colorButton) => {
       const colorId = colorButton.id;
       colorButton.addEventListener("click", () => {
-        const audio = new Audio("assets/sounds/click.mp3");
-        audio.play();
-        newGame.setPlayerColorChoice(colorId);
+        this.setPlayerColorChoice(colorId);
+        this.playAudio("assets/sounds/click.mp3");
       });
     });
   }
 
-  function handleConfirmChoiceButtonClick() {
+  handleConfirmChoiceButtonClick() {
+    const confirmChoiceButton = document.getElementById("confirm");
     confirmChoiceButton.addEventListener("click", () => {
-      if (newGame.compareColorChoiceAndTargetColor()) {
-        console.log(newGame);
-        const newTargetColor = selectRandomColourAsTarget();
-        newGame.targetColor = newTargetColor;
-        newGame.colorOptions = shuffleAll6Colours(newTargetColor);
-        setUpGame();
-      }
+      this.compareColorChoiceAndTargetColor()
+        ? this.playerMadeRightChoice()
+        : this.playerMadeWrongChoice();
+      this.setNewColourGroup();
     });
   }
 
-  function handlePlayerChoiceVerdict() {}
+  playerMadeRightChoice() {
+    const statusImageHolder = document.querySelector(".displayStatusImage");
+    statusImageHolder.style.backgroundImage = "var(--congratulations)";
+    statusImageHolder.classList.add("shown");
+  }
+
+  playerMadeWrongChoice() {
+    const statusImageHolder = document.querySelector(".displayStatusImage");
+    statusImageHolder.style.backgroundImage = "var(--wrong)";
+    statusImageHolder.classList.add("shown");
+  }
+}
+
+const game = () => {
+  const newGame = new GameController(selectRandomColourAsTarget());
+  const restartGameButton = document.getElementById("restart");
+  const score = document.getElementById("score");
+  newGame.setUpGame();
+  newGame.handleColorOptionButtonClick();
+  newGame.handleConfirmChoiceButtonClick();
 
   function playerMadeRightChoice() {}
   function playerMadeWrongChoice() {}
