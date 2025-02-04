@@ -159,15 +159,21 @@ class GameController {
   }
 
   playerMadeRightChoice() {
-    const statusImageHolder = document.querySelector(".displayStatusImage");
-    statusImageHolder.style.backgroundImage = "var(--congratulations)";
-    statusImageHolder.classList.add("shown");
+    this.showChoiceVerdict("--congratulations");
   }
 
   playerMadeWrongChoice() {
+    this.showChoiceVerdict("--wrong");
+  }
+
+  showChoiceVerdict(imageVar) {
     const statusImageHolder = document.querySelector(".displayStatusImage");
-    statusImageHolder.style.backgroundImage = "var(--wrong)";
+    statusImageHolder.style.backgroundImage = `var(${imageVar})`;
     statusImageHolder.classList.add("shown");
+    setTimeout(() => {
+      statusImageHolder.classList.remove("shown");
+      statusImageHolder.style.backgroundImage = "";
+    }, 2000);
   }
 }
 
