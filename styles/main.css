@@ -14,7 +14,7 @@
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.2;
 }
 
 /* Body Styles */
@@ -202,12 +202,11 @@ button {
 /* Color Box Styles */
 
 .color-box {
-    height: 180px;
-    max-width: 180px;
+    height: 150px;
+    width: 150px;
     border: 2px solid var(--color1);
     margin-inline: auto;
-    margin-block-start: 1.5rem;
-    margin-block-end: 3rem;
+    margin-block: 1.5rem;
     box-shadow: 0px 5px 15px -2px #00000099;
     border-radius: 15px;
     -webkit-border-radius: 15px;
@@ -220,7 +219,7 @@ button {
 .color-options {
     display: flex;
     gap: 15px;
-    padding-block: 2.5rem;
+    padding-block: 2rem;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -262,7 +261,6 @@ button {
     padding-inline: 10px;
     max-width: 50ch;
     margin-inline: auto;
-    line-height: 2;
 }
 
 /* Footer Styles */
@@ -279,7 +277,6 @@ footer {
 
 .container {
     position: relative;
-    padding-block: 1rem;
     --congratulations: url("assets/images/congratulations.png");
     --wrong: url("assets/images/wrong.png");
 }
@@ -303,12 +300,10 @@ footer {
 }
 
 
-
-
 /* Status message styles */
 .status {
     opacity: 0;
-    letter-spacing: 5px;
+    letter-spacing: 6px;
     padding-block: 5px;
     font-weight: 900;
     transition: all 300ms ease-in-out;
@@ -401,7 +396,13 @@ footer {
     button {
         font-size: 1rem;
     }
+
+    .color-box {
+        height: 180px;
+        width: 180px;
+    }
 }
+
 
 /*styles for laptops */
 
