@@ -50,6 +50,10 @@ h3 {
     color: var(--color1);
 }
 
+#score {
+    font-family: 'Ultra', serif;
+}
+
 p,
 button {
     font-family: 'Autour One', serif;
@@ -258,6 +262,37 @@ footer {
     padding-block: 0.8rem;
 }
 
+/* Container Styles */
+
+.container {
+    position: relative;
+    padding-block: 1rem;
+    --congratulations: url("assets/images/congratulations.png");
+    --wrong: url("assets/images/wrong.png");
+}
+
+.displayStatusImage {
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+    background-image: var(--congratulations);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    display: none;
+    transition: all 500ms ease-in-out;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+}
+
+.shown {
+    opacity: 1;
+    display: block;
+}
 
 /* styles for larger mobile devices */
 @media screen and (min-width: 500px) {
