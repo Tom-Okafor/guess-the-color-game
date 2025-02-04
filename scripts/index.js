@@ -144,7 +144,7 @@ class GameController {
       const colorId = colorButton.id;
       colorButton.addEventListener("click", () => {
         this.setPlayerColorChoice(colorId);
-        this.playAudio("assets/sounds/click.mp3");
+        this.playAudio("assets/sounds/select.mp3");
       });
     });
   }
@@ -152,12 +152,6 @@ class GameController {
   handleConfirmChoiceButtonClick() {
     const confirmChoiceButton = document.getElementById("confirm");
     confirmChoiceButton.addEventListener("click", () => {
-      // if (this.colorChoice) {
-      //   this.compareColorChoiceAndTargetColor()
-      //     ? this.playerMadeRightChoice()
-      //     : this.playerMadeWrongChoice();
-      // }
-
       this.colorChoice
         ? this.compareColorChoiceAndTargetColor()
           ? this.playerMadeRightChoice()
@@ -169,11 +163,13 @@ class GameController {
   playerMadeRightChoice() {
     this.showChoiceVerdict("--congratulations");
     this.displayGameStatus("Way to go Eyes! CORRECT!");
+    this.playAudio("assets/sounds/applause.mp3");
   }
 
   playerMadeWrongChoice() {
     this.showChoiceVerdict("--wrong");
     this.displayGameStatus("Now why would you flop that? WRONG!");
+    this.playAudio("assets/sounds/boo.mp3");
   }
 
   showChoiceVerdict(imageVar) {
@@ -185,13 +181,14 @@ class GameController {
       statusImageHolder.style.backgroundImage = "";
       this.setNewColourGroup();
       this.colorChoice = null;
-    }, 1500);
+    }, 2500);
   }
 
   sendErrorMessage() {
     const errorMessage = "Hey! You have to select a colour before you confirm.";
     const errorMessageElem = document.getElementById("errorMessage");
     errorMessageElem.innerText = errorMessage;
+    this.playAudio("assets/sounds/error.mp3");
     setTimeout(() => {
       errorMessageElem.innerText = "";
     }, 2000);
@@ -204,7 +201,7 @@ class GameController {
     setTimeout(() => {
       gameStatusElement.classList.remove("shown");
       gameStatusElement.innerText = "";
-    }, 2000);
+    }, 2500);
   }
 }
 
