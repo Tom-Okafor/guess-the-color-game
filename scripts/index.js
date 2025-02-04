@@ -69,13 +69,14 @@ function shuffleAll6Colours(targetColor) {
   ];
   //array must be shuffled otherwise the target colour will always be at the same position.
 
-  // using array.sort method to shuffle the array based on the result of the computation which either gives a -1 or 0. Each result will affect the position of each item. Shuffle it twice for efficient scattering.
+  // Shuffle it twice using the array.sort helper for efficient scattering.
   arrayOf6Colours
     .sort(() => Math.round(Math.random()) - 1)
     .sort(() => Math.round(Math.random()) - 1);
   return arrayOf6Colours;
 }
 
+// one of these will be displayed each time the player chooses the right colour.
 const correctStatuses = [
   "Way to go Eyes! CORRECT!",
   "Well, look at you, the color wizard! Nailed it!",
@@ -92,6 +93,7 @@ const correctStatuses = [
   "Nah! You're just too good, fren.",
 ];
 
+// one of these will be displayed each time the player chooses the wrong colour.
 const wrongStatuses = [
   "Now why would you flop that? WRONG!",
   "Well, that’s a nope. Better luck next time!",
@@ -112,6 +114,8 @@ const wrongStatuses = [
 function randomStatusMessage(category) {
   return category[generateRandomArrayIndex(category)];
 }
+
+// everything needed to successful run the game smoothly.
 class GameController {
   constructor(targetColor) {
     this.score = 0;
@@ -119,6 +123,7 @@ class GameController {
     this.colorOptions = shuffleAll6Colours(targetColor);
     this.colorChoice = null;
   }
+
   //find the target color position in the color options array.
   setTargetColorPosition() {
     const position = this.colorOptions.findIndex(
@@ -157,16 +162,20 @@ class GameController {
     return this.colorChoice === this.targetColorId;
   }
 
+  // set a new target color along with the color options
   setNewColourGroup() {
     this.targetColor = selectRandomColourAsTarget();
     this.colorOptions = shuffleAll6Colours(this.targetColor);
     this.setUpGame();
   }
+
+  // reset game to its original state
   restartGame() {
     this.score = 0;
     this.setNewColourGroup();
   }
 
+  // set everything in place for each level
   setUpGame() {
     this.setTargetColorPosition();
     this.setTargetBackgroundColor();
@@ -198,6 +207,7 @@ class GameController {
     });
   }
 
+  // check for accuracy when the confirm button is clicked and respond with the accurate method.
   handleConfirmChoiceButtonClick() {
     const confirmChoiceButton = document.getElementById("confirm");
     confirmChoiceButton.addEventListener("click", () => {
@@ -209,6 +219,7 @@ class GameController {
     });
   }
 
+  // if player makes the right choice then:
   playerMadeRightChoice() {
     this.incrementScore();
     this.setScore();
@@ -217,12 +228,14 @@ class GameController {
     this.playAudio("assets/sounds/applause.mp3");
   }
 
+  // if player makes the wrong choice then:
   playerMadeWrongChoice() {
     this.showChoiceVerdict("--wrong");
     this.displayGameStatus(randomStatusMessage(wrongStatuses));
     this.playAudio("assets/sounds/boo.mp3");
   }
 
+  // display an image that corresponds with the user's accuracy: right or wrong.
   showChoiceVerdict(imageVar) {
     const statusImageHolder = document.querySelector(".displayStatusImage");
     statusImageHolder.style.backgroundImage = `var(${imageVar})`;
@@ -235,6 +248,7 @@ class GameController {
     }, 2500);
   }
 
+  // if the player tries to submit without choosing a color then:
   sendErrorMessage() {
     const errorMessage = "Hey! You have to select a colour before you confirm.";
     const errorMessageElem = document.getElementById("errorMessage");
@@ -269,11 +283,13 @@ class GameController {
     });
   }
 
+  // show a warning box when player tries to restart
   openRestartWarningBox() {
     const restartGameWarning = document.querySelector(".warning");
     restartGameWarning.style.display = "block";
   }
 
+  // if player really wants to restart then:
   confirmRestart() {
     const confirmRestartBtn = document.getElementById("confirmRestart");
     confirmRestartBtn.onclick = () => {
@@ -281,18 +297,23 @@ class GameController {
       this.closeRestartWarningBox();
     };
   }
+
+  // do not restart the game and remove the warning box
   cancelRestart() {
     const cancelRestartBtn = document.getElementById("cancelRestart");
     cancelRestartBtn.onclick = () => {
       this.closeRestartWarningBox();
     };
   }
+
+  // close the warning box
   closeRestartWarningBox() {
     const restartGameWarning = document.querySelector(".warning");
     restartGameWarning.style.display = "none";
   }
 }
 
+// create an instance of the game controller and VIOLA!!
 const game = () => {
   const newGame = new GameController(selectRandomColourAsTarget());
   newGame.setUpGame();
@@ -302,3 +323,5 @@ const game = () => {
 };
 
 game();
+
+//phew, this was something! Thank you HNG!!!
