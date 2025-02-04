@@ -62,7 +62,7 @@ function shuffleAll6Colours(targetColor) {
   ];
   //array must be shuffled otherwise the target colour will always be at the same position.
 
-  // use array.sort method to shuffle the array based on the result of the computation which either gives a -1 or 0. Each result will affect the position of each item. Shuffle it twice to ensure efficient scattering.
+  // using array.sort method to shuffle the array based on the result of the computation which either gives a -1 or 0. Each result will affect the position of each item. Shuffle it twice for efficient scattering.
   arrayOf6Colours
     .sort(() => Math.round(Math.random()) - 1)
     .sort(() => Math.round(Math.random()) - 1);
@@ -120,8 +120,8 @@ class GameController {
     this.setUpGame();
   }
   restartGame() {
-    this.setNewColourGroup();
     this.score = 0;
+    this.setNewColourGroup();
   }
 
   setUpGame() {
@@ -129,11 +129,17 @@ class GameController {
     this.setTargetBackgroundColor();
     this.setTargetColorId();
     this.setColorOptionsBackgroundColors();
+    this.setScore();
   }
 
   playAudio(src) {
     const audio = new Audio(src);
     audio.play();
+  }
+
+  setScore() {
+    const score = document.getElementById("score");
+    score.innerText = this.score;
   }
 
   handleColorOptionButtonClick() {
@@ -161,6 +167,8 @@ class GameController {
   }
 
   playerMadeRightChoice() {
+    this.incrementScore();
+    this.setScore();
     this.showChoiceVerdict("--congratulations");
     this.displayGameStatus("Way to go Eyes! CORRECT!");
     this.playAudio("assets/sounds/applause.mp3");
@@ -177,9 +185,9 @@ class GameController {
     statusImageHolder.style.backgroundImage = `var(${imageVar})`;
     statusImageHolder.classList.add("shown");
     setTimeout(() => {
+      this.setNewColourGroup();
       statusImageHolder.classList.remove("shown");
       statusImageHolder.style.backgroundImage = "";
-      this.setNewColourGroup();
       this.colorChoice = null;
     }, 2500);
   }
@@ -203,18 +211,51 @@ class GameController {
       gameStatusElement.innerText = "";
     }, 2500);
   }
+
+  incrementScore() {
+    this.score = ++this.score;
+  }
+
+  addClickEventToRestartButton() {
+    const restartGameButton = document.getElementById("restart");
+    restartGameButton.addEventListener("click", () => {
+      this.playAudio("assets/sounds/click.mp3");
+      this.openRestartWarningBox();
+      this.cancelRestart();
+      this.confirmRestart();
+    });
+  }
+
+  openRestartWarningBox() {
+    const restartGameWarning = document.querySelector(".warning");
+    restartGameWarning.style.display = "block";
+  }
+
+  confirmRestart() {
+    const confirmRestartBtn = document.getElementById("confirmRestart");
+    confirmRestartBtn.onclick = () => {
+      this.restartGame();
+      this.closeRestartWarningBox();
+    };
+  }
+  cancelRestart() {
+    const cancelRestartBtn = document.getElementById("cancelRestart");
+    cancelRestartBtn.onclick = () => {
+      this.closeRestartWarningBox();
+    };
+  }
+  closeRestartWarningBox() {
+    const restartGameWarning = document.querySelector(".warning");
+    restartGameWarning.style.display = "none";
+  }
 }
 
 const game = () => {
   const newGame = new GameController(selectRandomColourAsTarget());
-  const restartGameButton = document.getElementById("restart");
-  const score = document.getElementById("score");
   newGame.setUpGame();
   newGame.handleColorOptionButtonClick();
   newGame.handleConfirmChoiceButtonClick();
-
-  function playerMadeRightChoice() {}
-  function playerMadeWrongChoice() {}
+  newGame.addClickEventToRestartButton();
 };
 
 game();
